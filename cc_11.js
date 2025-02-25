@@ -36,3 +36,49 @@ console.log(book1.getdetails())
 
 
 // -------------------------------------------------------------------------------------------------------------------------------
+
+
+
+// Task 2 - Created Borrower Class
+
+// Create a class, Borrower, and include information like name and the borrowerID
+
+class Borrower {
+    constructor(name, borrowerID) {
+        this.name = name
+        this.borrowerID = borrowerID
+        this.borrowedBooks = []
+    }
+
+    // A method to show what book is going to be borrowed
+
+    borrowBook(book) {
+        this.borrowedBooks.push(book)
+    }
+    
+    // A method to have a book returned to the library
+
+    returnBook(book) {
+        const index = this.borrowedBooks.indexOf(book)
+        if (index !== -1) {
+            this.borrowedBooks.splice(index, 1)
+        }
+    }
+}
+
+
+// Creating a borrower with a name and borrowerID, with them borrowing The Great Gatsby book
+
+const borrower1 = new Borrower("Alice Johnson", 201)
+borrower1.borrowBook("The Great Gatsby")
+console.log(borrower1.borrowedBooks)
+
+// Console-logging the borrower returning the book they borrowed
+
+borrower1.returnBook("The Great Gatsby")
+console.log(borrower1.borrowedBooks)
+
+
+
+
+// -------------------------------------------------------------------------------------------------------------------------------
