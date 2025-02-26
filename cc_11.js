@@ -23,7 +23,11 @@ class Book {
     }
 }
 
-// Creating a book and then updating the amount of copies, and finally, console-loggin the results.
+
+// -------------------------------------------------------------------------------------------------------------------------------
+
+
+// (Task 1) - Creating a book and then updating the amount of copies, and finally, console-loggin the results.
 
 const book1 = new Book("The Great Gatsby", "F. Scott Fitzgerald", 123456, 5)
 console.log(book1.getdetails())
@@ -67,7 +71,10 @@ class Borrower {
 }
 
 
-// Creating a borrower with a name and borrowerID, with them borrowing The Great Gatsby book
+// -------------------------------------------------------------------------------------------------------------------------------
+
+
+// (Task 2) - Creating a borrower with a name and borrowerID, with them borrowing The Great Gatsby book
 
 const borrower1 = new Borrower("Alice Johnson", 201)
 borrower1.borrowBook("The Great Gatsby")
@@ -109,10 +116,44 @@ class Library {
             console.log(book.getdetails())
         })
     }
+
+    // (Task 4) - Creating a method, lendBook, to associate a borrowed book to a person
+
+    lendBook(borrowerID, isbn) {
+        
+    // Allowing members to borrow books by finding if it is in stock, lending it to them, and updating it in the database
+        
+    const borrower = this.borrowers.find(b => b.borrowerID === borrowerID)
+
+        const book = this.books.find(b => b.isbn === isbn)
+
+        if (book.copies <= 0){
+            console.log("No Copies Available")
+            return
+        }
+
+
+        book.updateCopies(-1)
+        borrower.borrowBook(book.title) 
+    }
 }
 
-// Console-logging the Library to show what is in the library's database
+// -------------------------------------------------------------------------------------------------------------------------------
+
+
+// (Task 3) - Console-logging the Library to show what is in the library's database
 
 const library = new Library()
 library.addBook(book1)
 library.listBooks()
+
+
+// -------------------------------------------------------------------------------------------------------------------------------
+
+
+// (Task 4) - Console-logging the borrower and book that the person is borrowing with their ID and the book's ISBN
+
+library.borrowers.push(borrower1)
+library.lendBook(201, 123456)
+console.log(book1.getdetails())
+console.log(borrower1.borrowedBooks)
