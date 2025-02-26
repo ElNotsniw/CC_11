@@ -125,16 +125,33 @@ class Library {
         
     const borrower = this.borrowers.find(b => b.borrowerID === borrowerID)
 
-        const book = this.books.find(b => b.isbn === isbn)
+    const book = this.books.find(b => b.isbn === isbn)
 
-        if (book.copies <= 0){
+    if (book.copies <= 0){
             console.log("No Copies Available")
             return
         }
 
-
         book.updateCopies(-1)
         borrower.borrowBook(book.title) 
+    }
+
+    // (Task 5) - Implemented Book Returns
+
+    // Creating a method, returnBook, to show the return of a book by the borrowerID and ISBN
+
+    returnBook(borrowerID, isbn) {
+        const borrower = this.borrowers.find(b => b.borrowerID === borrowerID)
+
+        const book = this.books.find(b => b.isbn === isbn)
+
+        const bookIndex = borrower.borrowedBooks.indexOf(book.title)
+
+        // Updating the stock of the book into the database with the return 
+
+        borrower.returnBook(book.title)
+        book.updateCopies(1)
+
     }
 }
 
@@ -155,5 +172,16 @@ library.listBooks()
 
 library.borrowers.push(borrower1)
 library.lendBook(201, 123456)
+console.log(book1.getdetails())
+console.log(borrower1.borrowedBooks)
+
+
+
+// -------------------------------------------------------------------------------------------------------------------------------
+
+
+// (Task 5) - Console-logging the return of the book by ISBN and the borrower's ID and showing if they are borrowing anymore books
+
+library.returnBook(201, 123456)
 console.log(book1.getdetails())
 console.log(borrower1.borrowedBooks)
