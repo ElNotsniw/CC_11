@@ -82,3 +82,37 @@ console.log(borrower1.borrowedBooks)
 
 
 // -------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+// Task 3 - Created Library Class
+
+// Creating a class, Library, to include the books and the borrowers
+
+class Library {
+    constructor () {
+        this.books = []
+        this.borrowers = []
+    }
+
+    // Creating this method to add books to the library
+
+    addBook(book) {
+        this.books.push(book)
+    }
+
+    // Creating this method to list out all books in the library currently
+
+    listBooks() {
+        this.books.forEach(book => {
+            console.log(book.getdetails())
+        })
+    }
+}
+
+// Console-logging the Library to show what is in the library's database
+
+const library = new Library()
+library.addBook(book1)
+library.listBooks()
