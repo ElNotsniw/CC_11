@@ -30,10 +30,10 @@ class Book {
 // (Task 1) - Creating a book and then updating the amount of copies, and finally, console-loggin the results.
 
 const book1 = new Book("The Great Gatsby", "F. Scott Fitzgerald", 123456, 5)
-console.log(book1.getdetails())
+console.log(book1.getdetails())         // Output: "Title: The Great Gatsby, Author: F. Scott Fitzgerald, ISBN: 123456, Copies: 5"
 
 book1.updateCopies(-1)
-console.log(book1.getdetails())
+console.log(book1.getdetails())         // Output: "Title: The Great Gatsby, Author: F. Scott Fitzgerald, ISBN: 123456, Copies: 4"
 
 
 
@@ -78,12 +78,12 @@ class Borrower {
 
 const borrower1 = new Borrower("Alice Johnson", 201)
 borrower1.borrowBook("The Great Gatsby")
-console.log(borrower1.borrowedBooks)
+console.log(borrower1.borrowedBooks)                // Output: ["The Great Gatsby"]
 
 // Console-logging the borrower returning the book they borrowed
 
 borrower1.returnBook("The Great Gatsby")
-console.log(borrower1.borrowedBooks)
+console.log(borrower1.borrowedBooks)                // Output: []
 
 
 
@@ -162,7 +162,7 @@ class Library {
 
 const library = new Library()
 library.addBook(book1)
-library.listBooks()
+library.listBooks()                 // Output: "Title: The Great Gatsby, Author: F. Scott Fitzgerald, ISBN: 123456, Copies: 4"
 
 
 // -------------------------------------------------------------------------------------------------------------------------------
@@ -172,8 +172,8 @@ library.listBooks()
 
 library.borrowers.push(borrower1)
 library.lendBook(201, 123456)
-console.log(book1.getdetails())
-console.log(borrower1.borrowedBooks)
+console.log(book1.getdetails())                 // Output: "Title: The Great Gatsby, Author: F. Scott Fitzgerald, ISBN: 123456, Copies: 3"
+console.log(borrower1.borrowedBooks)            // Output: ["The Great Gatsby"]
 
 
 
@@ -183,5 +183,5 @@ console.log(borrower1.borrowedBooks)
 // (Task 5) - Console-logging the return of the book by ISBN and the borrower's ID and showing if they are borrowing anymore books
 
 library.returnBook(201, 123456)
-console.log(book1.getdetails())
-console.log(borrower1.borrowedBooks)
+console.log(book1.getdetails())             // Output: "Title: The Great Gatsby, Author: F. Scott Fitzgerald, ISBN: 123456, Copies: 4"
+console.log(borrower1.borrowedBooks)        // Output: []
